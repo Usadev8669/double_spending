@@ -20,6 +20,7 @@ Additionally, to notify the sender and receiver about the unauthorized transacti
 * This will help the neighbouring nodes terminate their connections with the fraudulent node pair, such that their transactions can be performed along other safe routes. 
 
 ## Blockchain Architecture  
+
 ![image](https://user-images.githubusercontent.com/63350417/165631842-0db1cae6-1e60-458d-8b57-35f26e33ceab.png)
 
 ## Model Overview 
@@ -145,14 +146,15 @@ console.log("\nPlease cancel your last transaction or try again later.");
 }
 ```  ![image](https://user-images.githubusercontent.com/63350417/165634071-0532c7ee-92d4-437f-b39d-b4f3dcbe3071.png)
 
-  **Peer Alert Systems**  
+**Peer Alert Systems**  
 
 In order to disconnect from the block where the fraudulent transaction or double spending attack has taken place, the neighbouring blocks are alerted. Any subsequent transactions that are scheduled for this block are redirected to other routes, and these neighbouring blocks terminate their connections with it. The sender (who wanted to conduct the double spending attack), has to either withdraw any one of the transactions within a given timeout period, or will be blocked temporarily before being able to perform any new transactions again.  
 
 Creating four new transactions in the blockchain:  
 
-<p align="left">![image](https://user-images.githubusercontent.com/63350417/165634138-8735ae46-a01e-433b-afbe-0fc94f090223.png)
-  </p>
+<p align="left">
+  <img width="1000" src="https://github.com/PRISHIta123/Cyber_Security_Project/blob/master/screenshots/pas1.JPG">
+</p>
 
 Displaying the current blockchain with the genesis block:  
 
@@ -162,6 +164,28 @@ Mining blocks to perform the transactions:
 
 <p align="left">
   <img width="1000" src="https://github.com/PRISHIta123/Cyber_Security_Project/blob/master/screenshots/pas3.JPG">
+</p>
+
+A double spending attack occurs in the blockchain. The network observer throws an error, asking the user to delete the last transaction, or be temporarily suspended. After this, the peer alert system will terminate connections of the other blocks to the fraudulent blocks (alerting neighbouring blocks) as shown below:  
+
+<p align="left">
+  <img width="1000" src="https://github.com/PRISHIta123/Cyber_Security_Project/blob/master/screenshots/pas4.JPG">
+</p>
+
+Therefore, due to the double spending attack, the number of transactions reduces from four to two (the ones involved in the attack are aborted). The peer alert system will nullify the preceding hash of blocks that had fraudulent blocks preceding them, due to the fact that the preceding hash is used as one of the parameters to calculate the current hash of any block.  
+
+![alt text](https://github.com/PRISHIta123/Cyber_Security_Project/blob/master/screenshots/pas5.JPG)
+
+To overcome this issue of having a null preceding hash, this block is replaced with a new genesis block, with a preceding hash of '0'. This will also lead to a new current hash being generated, that can be used to perform the same transaction as before (Change of transaction route).  
+
+![alt text](https://github.com/PRISHIta123/Cyber_Security_Project/blob/master/screenshots/pas6.JPG)
+
+Finally, after only genuine transactions are contained in the blockchain, they are processed, and the balances of each of the addresses are updated accordingly.  
+
+
+<p align="left">
+  <img width="1000" src="https://github.com/PRISHIta123/Cyber_Security_Project/blob/master/screenshots/pas7.JPG">
+
 </p>
 
 A double spending attack occurs in the blockchain. The network observer throws an error, asking the user to delete the last transaction, or be temporarily suspended. After this, the peer alert system will terminate connections of the other blocks to the fraudulent blocks (alerting neighbouring blocks) as shown below:  
